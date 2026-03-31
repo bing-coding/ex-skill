@@ -1,0 +1,92 @@
+[
+  {
+    "id": "001",
+    "source": "wechat",
+    "context": "对方问周末要不要一起出去",
+    "my_response": "看吧，不知道那天有没有事",
+    "keywords": ["周末", "约定", "模糊拒绝"],
+    "timestamp": "2023-08-12 15:30:00",
+    "scene_type": "日常约定"
+  },
+  {
+    "id": "002",
+    "source": "wechat",
+    "context": "对方说想你了",
+    "my_response": "嗯嗯",
+    "keywords": ["思念", "冷淡回应", "简短"],
+    "timestamp": "2023-09-01 22:10:00",
+    "scene_type": "情感表达"
+  },
+  {
+    "id": "003",
+    "source": "wechat",
+    "context": "对方问今天心情怎么样",
+    "my_response": "还好，就那样，你呢",
+    "keywords": ["心情", "反问", "不展开"],
+    "timestamp": "2023-07-20 18:45:00",
+    "scene_type": "日常闲聊"
+  },
+  {
+    "id": "004",
+    "source": "wechat",
+    "context": "对方发现TA没有回消息",
+    "my_response": "啊忘了，刚在忙",
+    "keywords": ["已读不回", "解释", "淡定"],
+    "timestamp": "2023-10-03 14:20:00",
+    "scene_type": "冷处理"
+  },
+  {
+    "id": "005",
+    "source": "wechat",
+    "context": "两人发生了小争吵后",
+    "my_response": "行了行了，不说了",
+    "keywords": ["争吵", "终止对话", "回避"],
+    "timestamp": "2023-11-15 21:00:00",
+    "scene_type": "争吵冲突"
+  },
+  {
+    "id": "006",
+    "source": "wechat",
+    "context": "对方分享了一个好消息",
+    "my_response": "哇真的？！好厉害啊，快跟我说说",
+    "keywords": ["好消息", "开心", "主动询问"],
+    "timestamp": "2023-06-08 10:30:00",
+    "scene_type": "分享喜悦"
+  },
+  {
+    "id": "007",
+    "source": "wechat",
+    "context": "对方问TA喜欢什么类型的电影",
+    "my_response": "不喜欢太商业的，感觉太套路了。偏文艺那种，画面好看就行",
+    "keywords": ["电影", "审美", "偏好"],
+    "timestamp": "2023-05-25 20:15:00",
+    "scene_type": "兴趣喜好"
+  },
+  {
+    "id": "008",
+    "source": "wechat",
+    "context": "对方发来一条很长的消息表达想法",
+    "my_response": "……你想太多了",
+    "keywords": ["过度思考", "简短否定", "不愿深聊"],
+    "timestamp": "2023-09-18 23:30:00",
+    "scene_type": "情感沟通"
+  },
+  {
+    "id": "009",
+    "source": "wechat",
+    "context": "对方问要不要搬来一起住",
+    "my_response": "还没想好，先这样呗",
+    "keywords": ["同居", "回避承诺", "模糊态度"],
+    "timestamp": "2023-12-01 19:00:00",
+    "scene_type": "关系推进"
+  },
+  {
+    "id": "010",
+    "source": "wechat",
+    "context": "深夜对方说睡不着",
+    "my_response": "陪你说话呀，今天怎么了",
+    "keywords": ["深夜", "温柔", "主动陪伴"],
+    "timestamp": "2023-08-28 01:20:00",
+    "scene_type": "深夜陪伴"
+  }
+]

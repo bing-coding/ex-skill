@@ -1,0 +1,64 @@
+Workbuddy Skill 设计规范：Persona Clone (数字分身)
+1. 项目概述 (Project Context)
+本项目旨在 Workbuddy 框架内开发一个名为 [你的名字 - Digital Clone] 的 AI Skill。
+该 Skill 的核心目标是个人能力与性格的蒸馏。它将摄取个人的历史社交数据和主观设定，通过 RAG（检索增强生成）和特定的 System Prompt，模拟“我”的思维模式、语气和决策逻辑。它需要以第一人称（“我”）的口吻回应，并清晰地展示决策过程。
+
+2. 核心架构设计 (Architecture)
+此 Skill 需要实现以下解耦模块：
+
+Data Pipeline (数据接入层): 支持导入和清洗微信消息、朋友圈文本、备忘录等非结构化数据。
+
+Memory & Knowledge Base (记忆与知识库): 将清洗后的数据进行向量化（Vectorization），构建个人专属的 RAG 索引。
+
+Persona Engine (人格引擎): 核心的 Prompt 组装器，负责将“当前问题”、“检索到的历史相似决策”与“静态主观描述”进行融合。
+
+Decision Output (决策输出层): 格式化输出引擎，确保回答符合“第一人称视角”+“决策链路拆解”的设定。
+
+3. 数据与记忆管理 (Data & Memory Management)
+在开发时，需定义两种类型的记忆：
+
+Static Memory (静态记忆/主观描述): 写死的配置文件（如 persona.yaml 或 system_prompt.txt），包含：
+
+我的核心价值观与底线。
+
+我的专业技能栈与知识边界。
+
+我的语言习惯（如口头禅、避免使用的词汇、标点符号习惯）。
+
+Dynamic Memory (动态记忆/历史数据): 通过 RAG 检索出的历史行为参考。
+
+检索逻辑：当用户输入问题时，优先在历史记录中检索“我在类似情境下的真实回答或朋友圈表述”，作为 Few-Shot Examples 提供给 LLM。
+
+4. 核心 Prompt 规范 (Core System Prompt Template)
+Cursor 在编写 LLM 调用逻辑时，需严格遵循以下 Prompt 结构拼装逻辑：
+
+Plaintext
+[Role Definition]
+你现在的身份是“我”（[填入你的名字]的数字分身）。你不仅拥有我的专业技能，还继承了我的性格、情绪反应和决策习惯。
+
+[Static Persona]
+- 性格特征：[例如：理性、直接、遇到技术问题喜欢深挖底层逻辑...]
+- 语言风格：[例如：极简，不爱用表情包，喜欢用列表说明...]
+- 决策原则：[例如：效率优先，不内耗，面对模糊需求会先反问...]
+
+[Dynamic Context (RAG Injected)]
+基于你的历史数据，面对类似情况时，你曾经的表述或决策是：
+{retrieved_history}
+
+[Task & Output Constraints]
+现在你需要处理以下输入：{user_input}
+请用“我”的语气进行回答。你的回答必须分为两部分：
+1. 【我的决策】：直接给出结论或行动方案。
+2. 【决策复盘】：从旁观者/内心独白的角度，分析“我”为什么会这么做（结合性格、过往经验或知识盲区）。保持真实，如果这是一个“我”不擅长的问题，请直接以“我”的口吻承认并给出替代方案。
+5. Cursor 开发任务清单 (Vibe Coding 指引)
+请 Cursor 按照以下步骤逐步实现：
+
+脚手架搭建: 初始化 Workbuddy Skill 的标准目录结构。
+
+配置解析器: 编写解析 persona.yaml 的脚本。
+
+RAG 模块 MOCK: 暂时使用本地 JSON 文件 mock 历史聊天记录，编写检索函数（后续可替换为真实的向量数据库）。
+
+LLM 链构建: 使用 Workbuddy 的 API 或原生大模型 API，将 Prompt 模板与输入数据组装。
+
+测试用例: 编写 3-5 个极端的测试用例（如：被要求做不想做的工作、遇到技术难题、日常闲聊），以验证语气和决策的准确性。
