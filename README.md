@@ -1,6 +1,9 @@
+
+本项目深受[colleague-skill](https://github.com/titanwings/colleague-skill)的启发，因此做了这个前任.skill,欢迎试用并提bug~
+
 # 前任.skill
 
-> 克隆你的前任。用 AI 还原 TA 的说话方式、情绪模式和在感情中的行为逻辑。
+> 克隆你的前任。
 
 ## 两种使用方式
 
